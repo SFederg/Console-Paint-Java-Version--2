@@ -16,7 +16,7 @@ public class Line extends Shape {
     }
 
     @Override
-    public void draw(char[][] drawArea) {
+    public void draw(String[] drawArea) {
         int correctCountPoints = countPoints;
         int y = -1, x = -1 * (correctCountPoints / 2);
 
@@ -34,8 +34,11 @@ public class Line extends Shape {
 
             if (flag) {
                 correctCountPoints--;
-                if ((x + position.getX()) < drawArea[0].length && (y + position.getY()) < drawArea.length)
-                    drawArea[y + position.getY()][x + position.getX()] = fillCharacter;
+                if ((x + position.getX()) < drawArea[0].length() && (y + position.getY()) < drawArea.length) {
+                    char[] str = drawArea[y + position.getY()].toCharArray();
+                    str[x + position.getX()] = fillCharacter;
+                    drawArea[y + position.getY()] = new String(str);
+                }
             }
         }
     }

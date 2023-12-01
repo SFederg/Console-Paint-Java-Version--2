@@ -23,7 +23,7 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public void draw(char[][] drawArea) {
+    public void draw(String[] drawArea) {
         firstSide.draw(drawArea);
         secondSide.draw(drawArea);
         thirdSide.draw(drawArea);

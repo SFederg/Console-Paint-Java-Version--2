@@ -7,5 +7,5 @@ public abstract class Shape {
         this.fillCharacter = fillCharacter;
     }
 
-    public abstract void draw(char[][] drawArea);
+    public abstract void draw(String[] drawArea);
 }

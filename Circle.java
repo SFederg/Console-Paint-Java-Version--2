@@ -12,7 +12,7 @@ public class Circle extends Shape {
     }
 
     @Override
-    public void draw(char[][] drawArea) {
+    public void draw(String[] drawArea) {
         int radius = this.radius;
         int centerX = position.getX();
         int centerY = position.getY();
@@ -20,8 +20,10 @@ public class Circle extends Shape {
         for (int y = -radius; y <= radius + centerY; y++) {
             for (int x = -radius; x <= radius + centerX; x++) {
                 if (((x - centerX) * (x - centerX) + (y - centerY) * (y - centerY)) <= (radius * radius)) {
-                    if ((x + centerX) < drawArea[0].length && (y + centerY) < drawArea.length) {
-                        drawArea[y + centerY][x + centerX] = fillCharacter;
+                    if ((x + centerX) < drawArea[0].length() && (y + centerY) < drawArea.length) {
+                        char[] str = drawArea[y + centerY].toCharArray();
+                        str[x + centerX] = fillCharacter;
+                        drawArea[y + centerY] = new String(str);
                     }
                 }
             }

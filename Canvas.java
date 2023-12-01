@@ -1,35 +1,26 @@
 public class Canvas {
-    private int width;
-    private int height;
-    private char fillCharacter;
-    private char[][] drawArea;
+    private static final int width = 100;
+    private static final int height = 50;
+    private static final char fillCharacter = ' ';
+    private static String[] drawArea = new String[height];
 
-    public Canvas(int width, int height, char fillCharacter) {
-        this.width = width;
-        this.height = height;
-        this.fillCharacter = fillCharacter;
-        drawArea = new char[height][width];
-        Clear();
-    }
-
-    public void Clear() {
+    public static void Clear() {
+        char [] str = new char[width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-				drawArea[i][j] = fillCharacter;
+				str[j] = fillCharacter;
             }
+            drawArea[i] = new String(str);
         }
     }
 
-    public void Add (Shape shape) {
+    public static void Add (Shape shape) {
         shape.draw(drawArea);
     }
 
-    public  void Display() {
+    public static void Display() {
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(drawArea[i][j]);
-            }
-            System.out.println();
+            System.out.print(drawArea[i] + "\n");
         }
     }
 }
