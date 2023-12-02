@@ -15,10 +15,18 @@ public class Canvas {
     }
 
     public static void Add (Shape shape) {
+        for (int i = 0; i < drawArea.length; i++)
+            if (drawArea[i] == null)
+                throw new NullPointerException("Canvas is not clear");
+
         shape.draw(drawArea);
     }
 
     public static void Display() {
+        for (int i = 0; i < drawArea.length; i++)
+            if (drawArea[i] == null)
+                throw new NullPointerException("Canvas is not clear");
+
         for (int i = 0; i < height; i++) {
             System.out.print(drawArea[i] + "\n");
         }

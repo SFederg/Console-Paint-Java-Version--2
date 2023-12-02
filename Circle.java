@@ -5,7 +5,7 @@ public class Circle extends Shape {
         super(position, fillCharacter);
 
         if (radius < 3) {
-            throw new Exception("Incorrect radius");
+            throw new IllegalArgumentException("radius can't be less than 3");
         }
 
         this.radius = radius;

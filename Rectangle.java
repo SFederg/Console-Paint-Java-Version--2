@@ -10,7 +10,7 @@ public class Rectangle extends Shape {
         super(position, fillCharacter);
 
         if (verticalSidesLength < 2 || horizontalSidesLength < 2) {
-            throw new Exception("Incorrect sides length");
+            throw new IllegalArgumentException("verticalSidesLength and horizontalSidesLength can't be less than 2");
         }
 
         this.verticalSidesLength = verticalSidesLength;

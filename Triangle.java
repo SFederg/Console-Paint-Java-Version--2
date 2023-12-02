@@ -7,7 +7,7 @@ public class Triangle extends Shape {
     public Triangle (Position position, char fillCharacter, int sidesLength) throws Exception {
         super(position, fillCharacter);
         if (sidesLength < 2) {
-            throw new Exception("Incorrect sidesLength");
+            throw new IllegalArgumentException("sidesLength can't be less than 2");
         }
         this.sidesLength = sidesLength;
 

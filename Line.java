@@ -7,7 +7,7 @@ public class Line extends Shape {
         super(position, fillCharacter);
 
         if (countPoints <= 0) {
-            throw new Exception("Incorrect arguments");
+            throw new IllegalArgumentException("countPoints can't be less or equal zero");
         }
 
         this.countPoints = countPoints;
