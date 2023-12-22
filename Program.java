@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Program {
     public static void main(String[] args) throws Exception {
         try {
@@ -25,12 +27,34 @@ public class Program {
                 }
             }
 
-            Canvas.Clear();
+            Canvas canvas = new Canvas(100, 50, ' ');
+            Canvas canvas1 = canvas.clone();
 
             for (int i = 0; i < shapes.length; i++) {
-                Canvas.Add(shapes[i]);
+                canvas1.Add(shapes[i]);
             }
-            Canvas.Display();
+
+            System.out.println(canvas1);
+
+            Finder<Shape, Line> finder = new Finder<>();
+            ArrayList<Shape> shapes1 = new ArrayList<>();
+            shapes1.add(circle);
+            shapes1.add(rectangle);
+            shapes1.add(line1);
+            shapes1.add(line2);
+            System.out.println("Тест поиска и сортировки");
+            for (Shape sh : shapes1) {
+                System.out.print(sh + " ");
+            }
+            System.out.println();
+            Shape line10 = finder.FindElement(shapes1, line1);
+            System.out.println(line10);
+            finder.SortByElementType(shapes1, line1);
+            for (Shape sh : shapes1) {
+                System.out.print(sh + " ");
+            }
+            System.out.println();
+
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         } catch (NullPointerException e) {

@@ -1,10 +1,18 @@
-public class Canvas {
-    private static final int width = 100;
-    private static final int height = 50;
-    private static final char fillCharacter = ' ';
-    private static String[] drawArea = new String[height];
+public class Canvas implements Cloneable {
+    private int width;
+    private int height;
+    private char fillCharacter;
+    private String[] drawArea;
 
-    public static void Clear() {
+    public Canvas(int width, int height, char fillCharacter) {
+        this.width = width;
+        this.height = height;
+        this.fillCharacter = fillCharacter;
+        drawArea = new String[height];
+        Clear();
+    }
+
+    public void Clear() {
         char [] str = new char[width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -14,21 +22,32 @@ public class Canvas {
         }
     }
 
-    public static void Add (Shape shape) {
-        for (int i = 0; i < drawArea.length; i++)
-            if (drawArea[i] == null)
-                throw new NullPointerException("Canvas is not clear");
-
+    public void Add (Shape shape) {
         shape.draw(drawArea);
     }
 
-    public static void Display() {
-        for (int i = 0; i < drawArea.length; i++)
-            if (drawArea[i] == null)
-                throw new NullPointerException("Canvas is not clear");
+    public void Add (IGroupable group) {
+        group.DrawGroup(drawArea);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder drawAreaStr = new StringBuilder();
 
         for (int i = 0; i < height; i++) {
-            System.out.print(drawArea[i] + "\n");
+            drawAreaStr.append(drawArea[i]).append("\n");
+        }
+
+        return drawAreaStr.toString();
+    }
+
+    @Override
+    public Canvas clone() {
+        try {
+            Canvas clone = (Canvas) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
         }
     }
 }
